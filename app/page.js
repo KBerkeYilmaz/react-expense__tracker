@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 import Main from './components/UI/Main';
@@ -34,7 +33,6 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
-
 
   const addExpenseHandler = expense => {
     setExpenses((prevExpenses) => {
