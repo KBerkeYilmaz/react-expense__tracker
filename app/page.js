@@ -5,8 +5,6 @@ import NewExpense from './components/NewExpense/NewExpense';
 import Main from './components/UI/Main';
 import { useState} from 'react';
 
-
-
 const DUMMY_EXPENSES = [
   {
     id: 'e1',
@@ -32,8 +30,15 @@ const DUMMY_EXPENSES = [
 
 
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
+  let totalSum = 0
+  DUMMY_EXPENSES.map((item) => {
+    let amount=item.amount
+    totalSum = amount + totalSum
+  })  
+  console.log(totalSum)
 
+
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
   const addExpenseHandler = expense => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
@@ -41,8 +46,16 @@ const App = () => {
   }
 
   return (
-        <Main className='bg-gray-700 flex flex-col justify-center items-center min-h-screen'>
-        <NewExpense onAddExpense = {addExpenseHandler} />
+        <Main className='
+        bg-gray-700 
+        flex 
+        flex-col 
+        justify-center 
+        items-center 
+        min-h-screen'>
+        <NewExpense 
+        onAddExpense = {addExpenseHandler} 
+        />
         <Expenses 
         items = {expenses}
         />
